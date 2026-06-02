@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tc Creig — Founder of Creignificent LLC. Building AI systems, automation infrastructure, and digital intelligence for real-world businesses. AI Automation • Cybersecurity • Business Systems.">
+  <meta name="keywords" content="Tc Creig, Creignificent LLC, AI Automation, Google Apps Script, Gemini API, Cybersecurity, AI Systems, Business Intelligence, Automation Architect">
+  <title>Tc Creig • AI Systems Architect | Founder, Creignificent LLC</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter + Space Grotesk + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#05070f] text-white overflow-x-hidden">
+  
+  <!-- CINEMATIC LOADING SCREEN -->
+  <div id="loader" class="fixed inset-0 z-[999] bg-[#020408] flex items-center justify-center">
+    <div class="relative text-center">
+      <!-- Holographic Logo -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative w-24 h-24">
+          <div class="absolute inset-0 rounded-full border border-[#d4af37]/30 animate-[spin_4s_linear_infinite]"></div>
+          <div class="absolute inset-2 rounded-full border border-[#00e5ff]/40 animate-[spin_3s_linear_infinite_reverse]"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-5xl font-bold tracking-[-3px] bg-gradient-to-br from-[#d4af37] via-[#f0d58a] to-[#d4af37] bg-clip-text text-transparent">TC</div>
+          </div>
+          <div class="absolute -inset-3 rounded-full bg-[radial-gradient(#d4af37_0.5px,transparent_1px)] bg-[length:3px_3px] opacity-20"></div>
+        </div>
+      </div>
+      
+      <div class="text-[#d4af37] text-xs tracking-[4px] font-mono mb-3">CREIGNIFICENT SYSTEMS</div>
+      <div class="text-3xl font-semibold tracking-[-1.5px] mb-2">INITIALIZING COMMAND CENTER</div>
+      <div class="text-[#00e5ff]/70 text-sm font-mono tracking-widest">SECURE • AI • OPERATIONAL</div>
+      
+      <!-- Progress bar -->
+      <div class="mt-10 w-80 mx-auto">
+        <div class="h-px bg-white/10 relative overflow-hidden">
+          <div id="loader-progress" class="absolute top-0 left-0 h-px bg-gradient-to-r from-[#d4af37] via-[#f0d58a] to-[#00e5ff] w-0 transition-all duration-300"></div>
+        </div>
+        <div class="flex justify-between text-[10px] font-mono text-white/40 mt-2 px-0.5">
+          <div>BOOT</div>
+          <div id="loader-percent">00%</div>
+          <div>SYNC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXED NAV -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="glass-nav mx-auto max-w-screen-2xl px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-x-3">
+        <div class="flex items-center gap-x-2.5">
+          <div class="w-8 h-8 rounded-full border border-[#d4af37]/70 flex items-center justify-center relative">
+            <span class="text-[#d4af37] text-xl font-bold tracking-[-1.5px] leading-none mt-px">TC</span>
+            <div class="absolute inset-0 rounded-full bg-[#d4af37] blur-xl opacity-20"></div>
+          </div>
+          <div>
+            <div class="font-semibold tracking-[-1px] text-xl">Tc Creig</div>
+            <div class="text-[9px] text-white/50 -mt-1 font-mono tracking-[1.5px]">CREIGNIFICENT LLC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+        <a href="#about" class="nav-link hover:text-[#d4af37] transition-colors">ABOUT</a>
+        <a href="#skills" class="nav-link hover:text-[#d4af37] transition-colors">CAPABILITIES</a>
+        <a href="#projects" class="nav-link hover:text-[#d4af37] transition-colors">PROJECTS</a>
+        <a href="#business" class="nav-link hover:text-[#d4af37] transition-colors">OPERATIONS</a>
+        <a href="#ai-lab" class="nav-link hover:text-[#d4af37] transition-colors">AI LAB</a>
+        <a href="#products" class="nav-link hover:text-[#d4af37] transition-colors">INTEL</a>
+      </div>
+
+      <div class="flex items-center gap-x-4">
+        <!-- System Status -->
+        <div class="hidden lg:flex items-center gap-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+          <div class="w-1.5 h-1.5 rounded-full bg-[#00ff9d] animate-pulse"></div>
+          <span class="text-[#00ff9d]">OPERATIONAL</span>
+        </div>
+        
+        <button onclick="document.getElementById('ai-lab').scrollIntoView({ behavior: 'smooth' })" 
+                class="hidden md:block px-5 py-2 text-xs font-semibold tracking-widest border border-[#00e5ff]/60 hover:bg-[#00e5ff]/10 hover:border-[#00e5ff] transition-all rounded-full">
+          LAUNCH LAB
+        </button>
+        
+        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                class="px-6 py-2 bg-[#d4af37] hover:bg-[#f0d58a] text-[#05070f] text-xs font-bold tracking-[1.5px] rounded-full transition-all active:scale-[0.985]">
+          CONTACT
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-white/70 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60] bg-[#020408]/95 pt-20 px-6">
+    <div class="flex flex-col text-xl font-medium gap-y-5">
+      <a href="#about" class="mobile-link py-2">ABOUT</a>
+      <a href="#skills" class="mobile-link py-2">CAPABILITIES</a>
+      <a href="#projects" class="mobile-link py-2">PROJECTS</a>
+      <a href="#business" class="mobile-link py-2">OPERATIONS</a>
+      <a href="#ai-lab" class="mobile-link py-2">AI LAB</a>
+      <a href="#products" class="mobile-link py-2">INTEL</a>
+      <div class="h-px bg-white/10 my-3"></div>
+      <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); closeMobileMenu()" 
+              class="text-left py-2 text-[#d4af37]">CONTACT COMMAND</button>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-[100dvh] flex items-center justify-center pt-16 pb-12 overflow-hidden">
+    <!-- Deep Space Background + Canvas -->
+    <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
+    
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 z-10 bg-[linear-gradient(rgba(212,175,55,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.035)_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+    
+    <!-- Radial vignette -->
+    <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(5,7,15,0.85)_82%)]"></div>
+
+    <div class="relative z-20 max-w-screen-2xl mx-auto px-6 pt-12 pb-16 grid lg:grid-cols-12 gap-y-12 items-center">
+      
+      <!-- Left Content -->
+      <div class="lg:col-span-7 xl:col-span-8 text-center lg:text-left">
+        <div class="inline-flex items-center gap-x-2 px-4 h-8 rounded-full border border-white/10 bg-white/[0.02] text-xs tracking-[3px] font-mono text-[#d4af37]/90 mb-8">
+          <span class="w-px h-3 bg-[#d4af37]"></span> 
+          FOUNDER • CREIGNIFICENT LLC • 2026
+        </div>
+
+        <h1 class="text-[64px] md:text-[80px] lg:text-[92px] xl:text-[100px] leading-[0.88] font-semibold tracking-[-5.8px] mb-6">
+          BUILDING AI SYSTEMS<br>FOR REAL-WORLD<br>BUSINESSES.
+        </h1>
+        
+        <p class="max-w-[620px] mx-auto lg:mx-0 text-xl lg:text-[22px] text-white/70 tracking-[-0.4px] leading-tight mb-10">
+          AI Automation • Cybersecurity • Digital Infrastructure •<br class="hidden md:block">Business Intelligence • Service Operations
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                  class="group flex items-center justify-center gap-x-3 px-9 h-14 rounded-full border-2 border-[#d4af37] hover:bg-[#d4af37] hover:text-[#05070f] text-[#d4af37] font-semibold tracking-[1px] text-sm transition-all active:scale-[0.985]">
+            <span>VIEW PROJECTS</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-0.5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7M5 12h14" /></svg>
+          </button>
+          
+          <button onclick="document.getElementById('ai-lab').scrollIntoView({ behavior: 'smooth' })" 
+                  class="group flex items-center justify-center gap-x-3 px-9 h-14 rounded-full border-2 border-white/30 hover:border-[#00e5ff] hover:bg-[#00e5ff]/5 text-white font-semibold tracking-[1px] text-sm transition-all active:scale-[0.985]">
+            <span>LAUNCH COMMAND CENTER</span>
+          </button>
+          
+          <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                  class="group flex items-center justify-center gap-x-3 px-9 h-14 rounded-full bg-white/5 hover:bg-white/10 border border-white/20 text-sm font-semibold tracking-[1px] transition-all active:scale-[0.985]">
+            CONTACT ME
+          </button>
+        </div>
+        
+        <div class="mt-8 flex items-center gap-x-8 text-xs font-mono tracking-widest text-white/40 justify-center lg:justify-start">
+          <div>ATLANTA • GLOBAL</div>
+          <div class="w-px h-3 bg-white/20"></div>
+          <div>AVAILABLE FOR SELECT ENGAGEMENTS</div>
+        </div>
+      </div>
+
+      <!-- Right: Holographic Command Dashboard + Avatar -->
+      <div class="lg:col-span-5 xl:col-span-4 relative">
+        <div class="relative mx-auto max-w-[380px] lg:ml-auto">
+          
+          <!-- Holographic Avatar Container -->
+          <div class="relative">
+            <!-- Avatar Silhouette -->
+            <div class="relative mx-auto w-72 h-72 rounded-full border-[12px] border-white/5 bg-[#0a0f1f] overflow-hidden shadow-2xl">
+              <!-- Gradient silhouette -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[#1a2338] via-[#0b0f1e] to-black"></div>
+              
+              <!-- Stylized Head + Shoulders -->
+              <svg viewBox="0 0 300 300" class="absolute inset-0 w-full h-full opacity-90">
+                <!-- Head -->
+                <ellipse cx="150" cy="118" rx="48" ry="54" fill="#111827" stroke="#d4af37" stroke-width="1.5"/>
+                <!-- Neck -->
+                <rect x="132" y="158" width="36" height="30" fill="#111827"/>
+                <!-- Shoulders -->
+                <path d="M78 188 Q150 255 222 188" fill="#111827" stroke="#d4af37" stroke-width="1.5"/>
+                <!-- Inner glow lines -->
+                <ellipse cx="150" cy="116" rx="32" ry="38" fill="none" stroke="#00e5ff" stroke-width="0.75" opacity="0.4"/>
+              </svg>
+              
+              <!-- Animated scan line -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#00e5ff]/10 to-transparent animate-[scan_2.8s_linear_infinite]"></div>
+              
+              <!-- AI Status -->
+              <div class="absolute bottom-5 left-1/2 -translate-x-1/2 px-4 py-px rounded-full bg-black/60 border border-[#00e5ff]/40 text-[10px] font-mono tracking-[2px] text-[#00e5ff]">AI ARCHITECT • ONLINE</div>
+            </div>
+
+            <!-- Orbiting rings -->
+            <div class="absolute -inset-5 border border-[#d4af37]/20 rounded-full animate-[spin_18s_linear_infinite]"></div>
+            <div class="absolute -inset-9 border border-[#00e5ff]/10 rounded-full animate-[spin_26s_linear_infinite_reverse]"></div>
+            
+            <!-- Floating AI Icons -->
+            <div class="absolute -top-3 -right-2 px-3.5 py-1.5 glass text-xs font-mono border border-[#00e5ff]/30 flex items-center gap-x-1.5">
+              <div class="w-1.5 h-1.5 rounded-full bg-[#00e5ff] animate-pulse"></div>
+              <span>GEMINI 2.5</span>
+            </div>
+            
+            <div class="absolute -bottom-1 -left-4 px-3 py-1 glass text-xs font-mono border border-[#d4af37]/30">GPT-4o + APPS SCRIPT</div>
+          </div>
+
+          <!-- Mini Dashboard Panels -->
+          <div class="absolute -bottom-4 -right-4 md:right-4 bg-[#0a0f1f]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 w-[218px] shadow-2xl text-xs">
+            <div class="flex items-center justify-between mb-3">
+              <div class="font-mono text-[#d4af37] text-[10px] tracking-widest">LIVE METRICS</div>
+              <div class="text-[#00ff9d] text-[10px]">LIVE</div>
+            </div>
+            <div class="space-y-2.5 text-[13px]">
+              <div class="flex justify-between"><span class="text-white/60">Active Agents</span> <span class="font-mono text-[#00e5ff]">47</span></div>
+              <div class="flex justify-between"><span class="text-white/60">Workflows Today</span> <span class="font-mono text-[#00e5ff]">1,842</span></div>
+              <div class="flex justify-between"><span class="text-white/60">Automation Uptime</span> <span class="font-mono text-[#00ff9d]">99.98%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-9 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center text-white/30 text-xs tracking-[3px] font-mono">
+      <div>SCROLL TO BEGIN</div>
+      <div class="h-px w-5 bg-white/30 mt-1.5"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="relative max-w-screen-2xl mx-auto px-6 pt-20 pb-24 border-t border-white/10">
+    <div class="grid lg:grid-cols-12 gap-x-12 items-start">
+      <div class="lg:col-span-5">
+        <div class="sticky top-24">
+          <div class="uppercase text-xs font-mono tracking-[4px] text-[#d4af37]">THE ARCHITECT</div>
+          <h2 class="text-7xl leading-none font-semibold tracking-[-4.5px] mt-3 mb-6">About<br>Me.</h2>
+          
+          <div class="flex flex-wrap gap-2">
+            <div class="text-xs font-mono px-4 py-1 border border-white/15 rounded-full">FOUNDER</div>
+            <div class="text-xs font-mono px-4 py-1 border border-white/15 rounded-full">AI SYSTEMS</div>
+            <div class="text-xs font-mono px-4 py-1 border border-white/15 rounded-full">CYBERSECURITY</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 mt-12 lg:mt-2 max-w-3xl space-y-7 text-[17px] text-white/80 leading-relaxed">
+        <p class="text-white">I am <span class="text-[#d4af37]">Tc Creig</span>, founder of Creignificent LLC and an AI systems architect building the infrastructure that powers the next generation of automated, intelligent businesses.</p>
+        
+        <p>I specialize in turning complex operations into elegant, autonomous systems. My work spans Google ecosystem automation, Gemini and OpenAI integrations, large-scale workflow engineering, and the design of AI-powered command centers for real enterprises.</p>
+        
+        <div class="pt-4 grid sm:grid-cols-2 gap-x-8 gap-y-6 text-sm">
+          <div>
+            <div class="font-mono text-[#d4af37] text-xs mb-1 tracking-widest">CURRENT FOCUS</div>
+            <ul class="space-y-1 text-white/75">
+              <li>• AI-first business infrastructure</li>
+              <li>• Predictive operations systems</li>
+              <li>• Secure automation at scale</li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-mono text-[#d4af37] text-xs mb-1 tracking-widest">PURSUING</div>
+            <ul class="space-y-1 text-white/75">
+              <li>• Cybersecurity (SNHU)</li>
+              <li>• Advanced AI agent architectures</li>
+              <li>• Fintech &amp; SaaS infrastructure</li>
+            </ul>
+          </div>
+        </div>
+        
+        <p class="text-base pt-3">My mission is simple: build the invisible systems that let businesses operate faster, cleaner, and more intelligently — without sacrificing control or security.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS / CAPABILITIES -->
+  <section id="skills" class="bg-[#020408] py-20 border-t border-white/10">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div>
+          <div class="uppercase font-mono tracking-[3.5px] text-xs text-[#d4af37]">THE ARSENAL</div>
+          <h3 class="text-6xl font-semibold tracking-[-3.5px]">Capabilities</h3>
+        </div>
+        <p class="text-white/50 max-w-xs text-sm mt-3 md:mt-0">Production-grade systems engineered for scale, security, and measurable business impact.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        <!-- Skills populated by JS for animation -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-screen-2xl mx-auto px-6 pt-24 pb-20 border-t border-white/10">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <div class="font-mono uppercase text-xs tracking-[4px] text-[#d4af37]">DELIVERED SYSTEMS</div>
+        <h3 class="text-6xl font-semibold tracking-[-3.5px]">Featured Projects</h3>
+      </div>
+      <div class="hidden md:block text-sm text-white/50">10 production systems • 2023–2026</div>
+    </div>
+
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </section>
+
+  <!-- BUSINESS / CREIGNIFICENT LLC -->
+  <section id="business" class="bg-[#020408] py-20 border-t border-white/10">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-x-16 gap-y-12">
+        <div>
+          <div class="uppercase text-xs font-mono text-[#d4af37] tracking-[4px]">CREIGNIFICENT LLC</div>
+          <h3 class="text-6xl leading-none tracking-[-3.5px] font-semibold mt-2 mb-6">Operational<br>Excellence,<br>AI-Enhanced.</h3>
+          
+          <div class="prose text-white/80 max-w-md">
+            <p>Founded to deliver best-in-class commercial cleaning and sanitation services — now supercharged with AI-native operational systems.</p>
+          </div>
+          
+          <div class="mt-8 flex items-center gap-3">
+            <div class="px-4 py-1.5 rounded-xl bg-white/5 text-sm border border-white/10 font-medium">EST. 2021</div>
+            <div class="px-4 py-1.5 rounded-xl bg-white/5 text-sm border border-white/10 font-medium">ATLANTA BASED • NATIONAL REACH</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+          <div class="glass p-6 rounded-3xl border border-white/10 hover:border-[#d4af37]/30 transition-colors">
+            <div class="text-[#d4af37] font-medium mb-3 flex items-center gap-x-2"><span>●</span> COMMERCIAL CLEANING</div>
+            <p class="text-white/70">Corporate facilities, office complexes, and industrial environments with precision scheduling and quality assurance.</p>
+          </div>
+          <div class="glass p-6 rounded-3xl border border-white/10 hover:border-[#d4af37]/30 transition-colors">
+            <div class="text-[#d4af37] font-medium mb-3 flex items-center gap-x-2"><span>●</span> DAYCARE SANITATION</div>
+            <p class="text-white/70">Specialized protocols for early childhood environments with rigorous health compliance and daily reporting.</p>
+          </div>
+          <div class="glass p-6 rounded-3xl border border-white/10 hover:border-[#d4af37]/30 transition-colors">
+            <div class="text-[#d4af37] font-medium mb-3 flex items-center gap-x-2"><span>●</span> MEDICAL &amp; CLINICAL</div>
+            <p class="text-white/70">Healthcare-adjacent sanitation and biohazard-aware protocols for clinics, labs, and medical offices.</p>
+          </div>
+          <div class="glass p-6 rounded-3xl border border-white/10 hover:border-[#d4af37]/30 transition-colors">
+            <div class="text-[#d4af37] font-medium mb-3 flex items-center gap-x-2"><span>●</span> MOVE-IN / MOVE-OUT</div>
+            <p class="text-white/70">Turnkey property preparation for real estate, property management, and high-end residential clients.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Enhanced Operations -->
+      <div class="mt-14 pt-12 border-t border-white/10">
+        <div class="uppercase font-mono text-xs text-[#00e5ff] tracking-widest mb-3">AI-ENHANCED OPERATIONS</div>
+        <h4 class="text-3xl font-semibold tracking-tight">The Creignificent Command System</h4>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-7">
+          <div class="flex gap-4 group">
+            <div class="w-8 h-8 shrink-0 mt-0.5 rounded-xl bg-[#00e5ff]/10 text-[#00e5ff] flex items-center justify-center border border-[#00e5ff]/30">01</div>
+            <div><div class="font-medium">QR-based digital workflows</div><div class="text-sm text-white/60">Instant job dispatch, real-time status</div></div>
+          </div>
+          <div class="flex gap-4 group">
+            <div class="w-8 h-8 shrink-0 mt-0.5 rounded-xl bg-[#00e5ff]/10 text-[#00e5ff] flex items-center justify-center border border-[#00e5ff]/30">02</div>
+            <div><div class="font-medium">Digital inspection systems</div><div class="text-sm text-white/60">Photo-verified checklists &amp; audit trails</div></div>
+          </div>
+          <div class="flex gap-4 group">
+            <div class="w-8 h-8 shrink-0 mt-0.5 rounded-xl bg-[#00e5ff]/10 text-[#00e5ff] flex items-center justify-center border border-[#00e5ff]/30">03</div>
+            <div><div class="font-medium">Predictive staffing AI</div><div class="text-sm text-white/60">Demand forecasting &amp; route optimization</div></div>
+          </div>
+          <div class="flex gap-4 group">
+            <div class="w-8 h-8 shrink-0 mt-0.5 rounded-xl bg-[#00e5ff]/10 text-[#00e5ff] flex items-center justify-center border border-[#00e5ff]/30">04</div>
+            <div><div class="font-medium">Client intelligence dashboards</div><div class="text-sm text-white/60">Transparent SLA reporting in real time</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CYBERSECURITY + AI LAB -->
+  <section id="ai-lab" class="py-20 border-t border-white/10">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-9">
+        <div>
+          <div class="font-mono text-xs uppercase tracking-[4px] text-[#00e5ff]">SECURE INTELLIGENCE DIVISION</div>
+          <h3 class="text-6xl font-semibold tracking-[-3.5px]">AI Agent Lab</h3>
+        </div>
+        <div class="hidden lg:block text-right text-xs max-w-[240px] text-white/50">A living environment for experimentation, threat modeling, and autonomous system design.</div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-5">
+        
+        <!-- Live Terminal -->
+        <div class="lg:col-span-5 glass rounded-3xl p-7 border border-white/10 relative overflow-hidden">
+          <div class="flex items-center gap-x-2 mb-4">
+            <div class="text-xs uppercase font-mono tracking-widest text-[#00e5ff]">SECURE TERMINAL • SESSION #A47X9</div>
+            <div class="flex-1 h-px bg-gradient-to-r from-white/20"></div>
+          </div>
+          <div id="terminal" class="font-mono text-sm h-[218px] overflow-hidden bg-black/60 rounded-2xl p-5 border border-white/5 text-[#00ff9d] text-[13px] leading-relaxed whitespace-pre-line"></div>
+        </div>
+
+        <!-- Neural Network Visualization -->
+        <div class="lg:col-span-4 glass rounded-3xl p-7 border border-white/10 flex flex-col">
+          <div class="text-xs uppercase font-mono tracking-widest text-[#d4af37] mb-3">NEURAL ARCHITECTURE</div>
+          <div class="flex-1 relative">
+            <canvas id="neural-canvas" class="w-full h-full rounded-xl" width="420" height="240"></canvas>
+          </div>
+          <div class="text-[10px] mt-3 text-white/40 font-mono flex justify-between">
+            <div>ACTIVE NODES: <span class="text-[#00e5ff]">312</span></div>
+            <div>INFERENCE: 14.2ms</div>
+          </div>
+        </div>
+
+        <!-- Threat / Monitoring Dashboard -->
+        <div class="lg:col-span-3 glass rounded-3xl p-7 border border-white/10">
+          <div class="text-xs font-mono tracking-widest text-[#d4af37] mb-4">THREAT INTELLIGENCE</div>
+          
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between text-xs mb-1.5"><span class="text-white/60">ANOMALIES DETECTED</span><span class="font-mono text-[#ff4d4d]">18</span></div>
+              <div class="h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-1.5 w-[18%] bg-gradient-to-r from-[#ff4d4d] to-[#ff8a8a]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5"><span class="text-white/60">BLOCKED ATTEMPTS (24H)</span><span class="font-mono text-[#00ff9d]">1,482</span></div>
+              <div class="h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-1.5 w-[84%] bg-gradient-to-r from-[#00ff9d] to-[#67f6ff]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1.5"><span class="text-white/60">AI AGENT INTEGRITY</span><span class="font-mono text-[#d4af37]">99.97%</span></div>
+              <div class="h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-1.5 w-[99.97%] bg-gradient-to-r from-[#d4af37] to-[#f0d58a]"></div></div>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-6 border-t border-white/10 text-xs">
+            <div class="text-white/60 mb-2 font-mono tracking-widest">CURRENT FOCUS</div>
+            <div class="text-sm leading-tight">Zero-trust agent orchestration • Adversarial prompt hardening • Secure retrieval pipelines</div>
+          </div>
+        </div>
+
+        <!-- Holographic Learning Panels -->
+        <div class="lg:col-span-12 mt-3 grid md:grid-cols-3 gap-5">
+          <div class="glass border border-white/10 rounded-3xl p-8">
+            <div class="uppercase tracking-widest text-xs text-[#d4af37]">ETHICAL AI FRAMEWORK</div>
+            <div class="mt-4 text-2xl leading-tight tracking-tight font-medium">Designing autonomous systems with accountability, transparency, and human oversight at every layer.</div>
+          </div>
+          <div class="glass border border-white/10 rounded-3xl p-8">
+            <div class="uppercase tracking-widest text-xs text-[#00e5ff]">CYBERSECURITY PATH</div>
+            <div class="text-white/80 mt-3 text-[15px]">Currently pursuing advanced studies at SNHU with a concentration in information security, digital forensics, and AI-driven defense systems.</div>
+            <div class="text-xs text-white/50 mt-6 font-mono">EXPECTED COMPLETION: 2027</div>
+          </div>
+          <div class="glass border border-white/10 rounded-3xl p-8 flex flex-col">
+            <div class="uppercase tracking-widest text-xs text-[#d4af37]">RESEARCH AREAS</div>
+            <div class="mt-auto grid grid-cols-2 gap-3 text-sm pt-4">
+              <div class="px-3 py-1 rounded-xl border border-white/10 bg-white/[0.015]">Agentic Workflow Security</div>
+              <div class="px-3 py-1 rounded-xl border border-white/10 bg-white/[0.015]">LLM Red Teaming</div>
+              <div class="px-3 py-1 rounded-xl border border-white/10 bg-white/[0.015]">Autonomous Infrastructure</div>
+              <div class="px-3 py-1 rounded-xl border border-white/10 bg-white/[0.015]">Secure RAG Pipelines</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Animated Command Metrics -->
+        <div class="lg:col-span-12 mt-5">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass rounded-3xl px-7 py-5 border border-white/10 flex justify-between items-center">
+              <div>
+                <div class="text-xs tracking-[1.5px] font-mono text-white/50">AGENTS ACTIVE</div>
+                <div id="stat-agents" class="text-5xl font-semibold tabular-nums text-[#00e5ff] tracking-[-2.5px]">47</div>
+              </div>
+              <div class="text-right text-[10px] font-mono text-[#00ff9d]">+3 TODAY</div>
+            </div>
+            <div class="glass rounded-3xl px-7 py-5 border border-white/10 flex justify-between items-center">
+              <div>
+                <div class="text-xs tracking-[1.5px] font-mono text-white/50">AUTOMATIONS RUN</div>
+                <div id="stat-autos" class="text-5xl font-semibold tabular-nums text-[#d4af37] tracking-[-2.5px]">1842</div>
+              </div>
+              <div class="text-right text-[10px] font-mono text-[#00ff9d]">LAST 24H</div>
+            </div>
+            <div class="glass rounded-3xl px-7 py-5 border border-white/10 flex justify-between items-center">
+              <div>
+                <div class="text-xs tracking-[1.5px] font-mono text-white/50">THREATS NEUTRALIZED</div>
+                <div id="stat-threats" class="text-5xl font-semibold tabular-nums text-[#00ff9d] tracking-[-2.5px]">1482</div>
+              </div>
+              <div class="text-right text-[10px] font-mono text-[#00ff9d]">24 HOURS</div>
+            </div>
+            <div class="glass rounded-3xl px-7 py-5 border border-white/10 flex justify-between items-center">
+              <div>
+                <div class="text-xs tracking-[1.5px] font-mono text-white/50">SYSTEM UPTIME</div>
+                <div id="stat-uptime" class="text-5xl font-semibold tabular-nums text-white tracking-[-1.8px]">99.98<span class="text-xl align-super">%</span></div>
+              </div>
+              <div class="text-right text-[10px] font-mono text-[#d4af37]">30 DAYS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL PRODUCTS / INTEL -->
+  <section id="products" class="max-w-screen-2xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <div class="font-mono text-xs tracking-[4px] uppercase text-[#d4af37]">CLASSIFIED INTELLIGENCE</div>
+        <h3 class="text-6xl font-semibold tracking-[-3.5px]">Digital Products</h3>
+      </div>
+      <div class="hidden lg:block text-white/40 text-sm">Field-tested playbooks • Guides • Systems</div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4" id="products-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="border-t border-white/10 bg-[#020408]">
+    <div class="max-w-screen-2xl mx-auto px-6 pt-20 pb-24 grid lg:grid-cols-12 gap-x-12">
+      <div class="lg:col-span-5">
+        <div class="uppercase text-xs font-mono tracking-[4px] text-[#d4af37]">SECURE CHANNEL</div>
+        <h3 class="text-7xl leading-none tracking-[-4.5px] font-semibold mt-3">Let's build<br>something<br>extraordinary.</h3>
+        
+        <div class="mt-12 text-sm space-y-6 text-white/70">
+          <p>Whether you're looking to deploy autonomous AI infrastructure, modernize legacy operations, or explore strategic partnerships — I’m ready to talk.</p>
+          <div>
+            <div class="font-mono text-xs tracking-widest text-[#d4af37] mb-1">PREFERRED RESPONSE TIME</div>
+            <div>Within 24 hours • Priority for enterprise projects</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Futuristic Contact Form -->
+      <div class="lg:col-span-7 mt-12 lg:mt-0">
+        <form id="contact-form" class="glass rounded-3xl p-9 border border-white/10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs tracking-widest font-mono text-white/50 mb-2">NAME</label>
+              <input type="text" id="name" required class="w-full bg-black/40 border border-white/15 focus:border-[#d4af37]/60 text-white placeholder:text-white/30 rounded-2xl h-14 px-6 outline-none transition-all">
+            </div>
+            <div>
+              <label class="block text-xs tracking-widest font-mono text-white/50 mb-2">EMAIL</label>
+              <input type="email" id="email" required class="w-full bg-black/40 border border-white/15 focus:border-[#d4af37]/60 text-white placeholder:text-white/30 rounded-2xl h-14 px-6 outline-none transition-all">
+            </div>
+          </div>
+          
+          <div class="mt-5">
+            <label class="block text-xs tracking-widest font-mono text-white/50 mb-2">MESSAGE / PROJECT BRIEF</label>
+            <textarea id="message" rows="6" required class="w-full resize-y min-h-[132px] bg-black/40 border border-white/15 focus:border-[#d4af37]/60 text-white placeholder:text-white/30 rounded-3xl p-6 outline-none transition-all"></textarea>
+          </div>
+
+          <div class="mt-7 flex items-center justify-between flex-wrap gap-y-4">
+            <button type="submit" id="send-btn"
+                    class="group relative inline-flex items-center justify-center px-14 h-14 rounded-full bg-gradient-to-r from-[#d4af37] to-[#f0d58a] text-[#05070f] font-bold tracking-[2.2px] text-sm overflow-hidden transition-all active:scale-[0.985]">
+              <span class="relative z-10">TRANSMIT MESSAGE</span>
+              <div class="absolute inset-0 bg-white opacity-0 group-active:opacity-20 transition"></div>
+            </button>
+            
+            <div class="text-xs text-white/40">All transmissions are encrypted • End-to-end</div>
+          </div>
+        </form>
+
+        <!-- Socials -->
+        <div class="mt-9 flex flex-wrap items-center gap-x-4 gap-y-3 text-sm">
+          <div class="uppercase text-xs font-mono text-white/40 mr-1 tracking-widest">CONNECT</div>
+          <a href="https://linkedin.com/in/tccreig" target="_blank" class="flex items-center gap-x-2 px-4 py-2 rounded-full border border-white/10 hover:border-[#00e5ff] hover:text-[#00e5ff] transition-all"><span>LinkedIn</span></a>
+          <a href="https://github.com/TcCreig" target="_blank" class="flex items-center gap-x-2 px-4 py-2 rounded-full border border-white/10 hover:border-[#00e5ff] hover:text-[#00e5ff] transition-all"><span>GitHub</span></a>
+          <a href="mailto:tc@creignificent.com" class="flex items-center gap-x-2 px-4 py-2 rounded-full border border-white/10 hover:border-[#00e5ff] hover:text-[#00e5ff] transition-all"><span>Gmail</span></a>
+          <a href="https://x.com/tccreig" target="_blank" class="flex items-center gap-x-2 px-4 py-2 rounded-full border border-white/10 hover:border-[#00e5ff] hover:text-[#00e5ff] transition-all"><span>X</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-9 text-center text-xs font-mono tracking-widest text-white/40">
+    <div>Tc Creig • Creignificent LLC • AI Systems • Automation • Cybersecurity • 2026</div>
+    <div class="mt-1.5 text-[10px]">All systems designed for precision. All rights reserved.</div>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div id="project-modal" onclick="if (event.target.id === 'project-modal') closeProjectModal()" class="hidden fixed inset-0 z-[80] bg-black/90 flex items-center justify-center p-5">
+    <div onclick="event.stopImmediatePropagation()" class="glass w-full max-w-3xl rounded-3xl border border-white/10 overflow-hidden">
+      <div class="p-9">
+        <div class="flex justify-between items-start">
+          <div>
+            <div id="modal-icon" class="text-5xl mb-4"></div>
+            <div id="modal-title" class="text-4xl font-semibold tracking-tight"></div>
+            <div id="modal-tagline" class="text-[#d4af37] font-mono text-xs tracking-[3px] mt-1"></div>
+          </div>
+          <button onclick="closeProjectModal()" class="text-white/50 hover:text-white p-2">CLOSE</button>
+        </div>
+        
+        <div id="modal-mission" class="mt-7 text-lg text-white/80 leading-tight"></div>
+        
+        <div class="mt-8">
+          <div class="uppercase text-xs tracking-widest font-mono text-white/50">TECHNOLOGY STACK</div>
+          <div id="modal-tech" class="flex flex-wrap gap-2 mt-3"></div>
+        </div>
+        
+        <div class="mt-8 pt-8 border-t border-white/10 flex items-center justify-between text-sm">
+          <div id="modal-status" class="uppercase tracking-widest font-mono text-[#00ff9d]"></div>
+          <a id="modal-link" href="#" target="_blank" class="inline-flex items-center gap-x-2 px-7 py-3 rounded-2xl border border-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">OPEN PROJECT DASHBOARD →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="product-modal" onclick="if (event.target.id === 'product-modal') closeProductModal()" class="hidden fixed inset-0 z-[80] bg-black/90 flex items-center justify-center p-5">
+    <div onclick="event.stopImmediatePropagation()" class="glass w-full max-w-xl rounded-3xl border border-white/10 overflow-hidden">
+      <div class="p-9">
+        <div id="product-modal-content"></div>
+        <div class="flex gap-3 mt-8">
+          <button onclick="closeProductModal()" class="flex-1 py-3.5 rounded-2xl border border-white/15 hover:bg-white/5 text-sm font-medium tracking-wider">CLOSE</button>
+          <button onclick="simulateDownload()" class="flex-1 py-3.5 rounded-2xl bg-[#d4af37] text-black text-sm font-bold tracking-[1.5px]">REQUEST SECURE COPY</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
